@@ -23,31 +23,16 @@ ROME_EXTRUDER_DIR=""
 ROME_HOTENDS_DIR=""
 ROME_SENSORS_DIR=""
 KLIPPY_EXTRAS="${HOME}/klipper/klippy/extras"
-RATOS_V1_CONFIG_DIR="${HOME}/klipper_config"
-RATOS_V2_CONFIG_DIR="${HOME}/printer_data/config"
-
-function get_ratos_version {
-    if [ -d "${RATOS_V1_CONFIG_DIR}" ]; then
-        echo -e "RatOS Version 1.x"
-        KLIPPER_CONFIG_DIR="${RATOS_V1_CONFIG_DIR}"
-    else
-        if [ -d "${RATOS_V2_CONFIG_DIR}" ]; then
-            echo -e "RatOS Version 2.x"
-            KLIPPER_CONFIG_DIR="${RATOS_V2_CONFIG_DIR}"
-        else
-            echo -e "ERROR: No RatOS config folder found."
-            exit 1
-        fi
-    fi
-    KLIPPER_CONFIG_MMU_DIR="${KLIPPER_CONFIG_DIR}/mmu"
-    KLIPPER_CONFIG_FEEDER_DIR="${KLIPPER_CONFIG_DIR}/feeder"
-    ROME_DIR="${KLIPPER_CONFIG_DIR}/rome"
-    ROME_BASE_DIR="${KLIPPER_CONFIG_DIR}/rome/base"
-    ROME_MMU_DIR="${KLIPPER_CONFIG_DIR}/rome/mmu"
-    ROME_FEEDER_DIR="${KLIPPER_CONFIG_DIR}/rome/feeder"
-    ROME_EXTRUDER_DIR="${KLIPPER_CONFIG_DIR}/rome/extruder"
-    ROME_HOTENDS_DIR="${KLIPPER_CONFIG_DIR}/rome/hotends"
-    ROME_SENSORS_DIR="${KLIPPER_CONFIG_DIR}/rome/sensors"
+KLIPPER_CONFIG_DIR="${HOME}/printer_data/config"
+KLIPPER_CONFIG_MMU_DIR="${KLIPPER_CONFIG_DIR}/mmu"
+KLIPPER_CONFIG_FEEDER_DIR="${KLIPPER_CONFIG_DIR}/feeder"
+ROME_DIR="${KLIPPER_CONFIG_DIR}/rome"
+ROME_BASE_DIR="${KLIPPER_CONFIG_DIR}/rome/base"
+ROME_MMU_DIR="${KLIPPER_CONFIG_DIR}/rome/mmu"
+ROME_FEEDER_DIR="${KLIPPER_CONFIG_DIR}/rome/feeder"
+ROME_EXTRUDER_DIR="${KLIPPER_CONFIG_DIR}/rome/extruder"
+ROME_HOTENDS_DIR="${KLIPPER_CONFIG_DIR}/rome/hotends"
+ROME_SENSORS_DIR="${KLIPPER_CONFIG_DIR}/rome/sensors"
 }
 
 function stop_klipper {
@@ -128,7 +113,8 @@ function link_rome_macros {
             # Base
             ln -sf "${SRCDIR}/klipper_macro/base/config.cfg" "${ROME_BASE_DIR}/config.cfg"
             ln -sf "${SRCDIR}/klipper_macro/base/macros.cfg" "${ROME_BASE_DIR}/macros.cfg"
-
+            ln -sf "${SRCDIR}/klipper_macro/base/RatOsMacros.cfg" "${ROME_BASE_DIR}/RatOsMacros.cfg"
+            
             # Extruder
             ln -sf "${SRCDIR}/klipper_macro/extruder/base.cfg" "${ROME_EXTRUDER_DIR/}/base.cfg"
             ln -sf "${SRCDIR}/klipper_macro/extruder/orbiter_504.cfg" "${ROME_EXTRUDER_DIR/}/orbiter_504.cfg"
@@ -220,7 +206,6 @@ while getopts "c:h" arg; do
 done
 
 # Run steps
-get_ratos_version
 stop_klipper
 create_rome_dir
 link_rome_macros
