@@ -52,7 +52,7 @@ Examples
 ```
 cd ~/
 git clone https://github.com/PoundCak3/romeKlipper.git
-bash ~/rome/install.sh
+bash ~/romeKlipper/install.sh
 ```
 
 ## RatOS
