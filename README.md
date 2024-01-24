@@ -70,7 +70,7 @@ Please make all changes and overrides in this file, there is no need to do that 
 [update_manager rome]
 type: git_repo
 primary_branch: main
-path: ~/rome
+path: ~/romeKlipper
 origin: https://github.com/PoundCak3/romeKlipper.git
 is_system_service: False
 managed_services: klipper
