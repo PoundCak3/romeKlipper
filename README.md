@@ -1,7 +1,9 @@
 # ROME
-RatOS Multi Extruder
+WIP Rome adaptation for regular Klipper Installation.
 
-A multi extruder feeder to direct extruder solution for RatOS
+!!!STILL UNTESTED, BACK UP YOUR FILES BEFORE TRYING THIS!!!
+
+The RatOsMacros.cfg file contains the macros and variables used by Rome such as start and end_print macros, pause, etc. This will need to be changed acording to your setup. Since this is based os RatOs that uses a lot of includes in the files it can be a little confusing, any changes you have to do are done in the main Rome.cfg file, it will override automatically.
 
 ## Table of Content
 - [Intro](#intro)
@@ -49,7 +51,7 @@ Examples
 ## Raspberry
 ```
 cd ~/
-git clone https://github.com/HelgeKeck/rome.git
+git clone https://github.com/PoundCak3/romeKlipper.git
 bash ~/rome/install.sh
 ```
 
@@ -69,7 +71,7 @@ Please make all changes and overrides in this file, there is no need to do that 
 type: git_repo
 primary_branch: main
 path: ~/rome
-origin: https://github.com/HelgeKeck/rome.git
+origin: https://github.com/PoundCak3/romeKlipper.git
 is_system_service: False
 managed_services: klipper
 install_script: install.sh
