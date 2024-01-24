@@ -33,7 +33,6 @@ ROME_FEEDER_DIR="${KLIPPER_CONFIG_DIR}/rome/feeder"
 ROME_EXTRUDER_DIR="${KLIPPER_CONFIG_DIR}/rome/extruder"
 ROME_HOTENDS_DIR="${KLIPPER_CONFIG_DIR}/rome/hotends"
 ROME_SENSORS_DIR="${KLIPPER_CONFIG_DIR}/rome/sensors"
-}
 
 function stop_klipper {
     if [ "$(sudo systemctl list-units --full -all -t service --no-legend | grep -F "klipper.service")" ]; then
